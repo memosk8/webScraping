@@ -10,9 +10,9 @@ section_titles = soup.find_all('div','container-title-module__titleHeader___WUX8
 # obtener secciones completas
 main_containers = soup.find_all('div', 'container-items-module__containerItem___OhnxW')
 #clases de subelementos de todas las secciones
-elements_classes = ['guide-item-module__guideItemTitleMultiLine___ddgqh guide-item-module__guideItemTitle___nYoaH',
+elements_classes = ['guide-item-module__guideItemTitleMultiLine___ddgqh',
 						  'numbered-link-module__headerText___PPhv6',
-						  'guide-item-module__guideItemTitleAlt___oAxuc']
+						  'guide-item-module__guideItemTitleAlt___oAxuc', 'guideItemTitle > titles-module__titleText___KQtb_']
 
 sections = []
 elements = []
@@ -25,8 +25,7 @@ for container in main_containers:
 	#elementos de la seccion
 	for element in elements_classes:
 		if(container.find('div',element)):
-			elements.append(container.find('div',element).text)
-		#content = container.find_all('div','')
+			elements.append(container.find_all('div',element))
 
 	sections.append({title.text: elements})
 	print(sections[i],'\n')
