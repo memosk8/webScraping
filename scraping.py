@@ -11,25 +11,27 @@ section_titles = soup.find_all('div','container-title-module__titleHeader___WUX8
 main_containers = soup.find_all('div', 'container-items-module__containerItem___OhnxW')
 #clases de subelementos de todas las secciones
 elements_classes = ['guide-item-module__guideItemTitleMultiLine___ddgqh',
-						  'numbered-link-module__headerText___PPhv6',
-						  'guide-item-module__guideItemTitleAlt___oAxuc', 'guideItemTitle > titles-module__titleText___KQtb_']
+					'numbered-link-module__numberedLinkContainer___EPfHi',
+					'link-module__container___vhfuW', 'titles-module__titleText___KQtb_']
 
 sections = []
 elements = []
-i = 0;
+i = 0
 # crear un objeto por cada seccion {titulo: [elementos]}
 for container in main_containers:
-	#print('\t',container.text,'\n')
 	#titulo de la seccion
-	title = container.find('div', 'container-title-module__titleHeader___WUX8D')
+	title = section_titles[i]
 	#elementos de la seccion
+	print(f"#{i} title: {title.text} ")
 	for element in elements_classes:
 		if(container.find('div',element)):
-			elements.append(container.find_all('div',element))
-
-	sections.append({title.text: elements})
-	print(sections[i],'\n')
+			elements.append(container.find('div',element))
+			print(element)
 	i = i + 1
+
+#sections.append({title.text: elements})
+#print(sections[i],'\n')
+#i = i + 1
 # section# = {section_title: section_elements}
 
 # todos los elementos individuales
