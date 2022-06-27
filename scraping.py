@@ -14,7 +14,6 @@ page_title = soup.title
 # titulos de categorias
 section_titles = soup.find_all(
     'div', 'container-title-module__titleHeader___WUX8D')
-title_class = 'container-title-module__titleHeader___WUX8D'
 
 # obtener secciones completas (titulo, contenido)
 category_containers = soup.find_all(
@@ -52,7 +51,7 @@ for container in category_containers:
 categories.pop(2)
 
 # local conection string
-# pymongo.MongoClient('mongodb://127.0.0.1') 
+# pymongo.MongoClient('mongodb://127.0.0.1')
 # cloud conection string
 mongo = pymongo.MongoClient('mongodb://memosk8:Password123@ac-yygcs2d-shard-00-00.nuhhssx.mongodb.net:27017,ac-yygcs2d-shard-00-01.nuhhssx.mongodb.net:27017,ac-yygcs2d-shard-00-02.nuhhssx.mongodb.net:27017/?ssl=true&replicaSet=atlas-ce6o63-shard-0&authSource=admin&retryWrites=true&w=majority')
 if(mongo):
@@ -60,6 +59,7 @@ if(mongo):
 scrap = mongo.tunein.categories
 try:
     scrap.insert_many(categories)
-    print(f'se insertaron {len(categories)} categorias de tunein.com/radio/music')
+    print(
+        f'se insertaron {len(categories)} categorias de tunein.com/radio/music')
 except pymongo.errors.ConnectionFailure as error:
     print(error)
