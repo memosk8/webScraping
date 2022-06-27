@@ -3,7 +3,9 @@ from bs4 import BeautifulSoup
 import requests
 import pymongo
 
-html_doc = requests.get('https://tunein.com/radio/music/')
+path = 'https://tunein.com/radio/music/'
+print(f'\n-- obteniendo la información de {path} --\n')
+html_doc = requests.get(path)
 soup = BeautifulSoup(html_doc.content, 'lxml')
 
 # <title/>
@@ -48,6 +50,7 @@ for container in category_containers:
 
 # categoria sin texto solo imagenes
 categories.pop(2)
+
 # local conection string
 # pymongo.MongoClient('mongodb://127.0.0.1') 
 # cloud conection string
