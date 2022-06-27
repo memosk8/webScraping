@@ -51,7 +51,7 @@ categories.pop(2)
 # local conection string
 # pymongo.MongoClient('mongodb://127.0.0.1') 
 # cloud conection string
-client = pymongo.MongoClient('mongodb+srv://memosk8:Password1232@cluster0.nuhhssx.mongodb.net/?retryWrites=true&w=majority')
+client = pymongo.MongoClient('mongodb://memosk8:Password123@ac-yygcs2d-shard-00-00.nuhhssx.mongodb.net:27017,ac-yygcs2d-shard-00-01.nuhhssx.mongodb.net:27017,ac-yygcs2d-shard-00-02.nuhhssx.mongodb.net:27017/?ssl=true&replicaSet=atlas-ce6o63-shard-0&authSource=admin&retryWrites=true&w=majority')
 if(client):
     print("\n-- Mongo connected --\n")
 scrap = client.tunein.categories
